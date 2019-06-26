@@ -1,0 +1,28 @@
+version: '0.1'
+services:
+  db:
+    image: mysql:5.7
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_DATABASE: 'formula_one_database'
+      MYSQL_USER: 'userFormulaOne'
+      MYSQL_PASSWORD: 'passwordUserFormulaOne'
+      MYSQL_ROOT_PASSWORD: 'passwordRootFormulaOne'
+    restart: always
+    expose:
+      - '3306'
+  labs-formula-one-back-container:
+    image:
+      guillaumegalloissuperstar/labs-formula-one-back:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - /data/springboot-docker-compose-app
+    expose:
+      - '8080'
+# Names our volume
+volumes:
+  container-volume:
