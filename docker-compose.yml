@@ -1,6 +1,6 @@
 version: '0.1'
 services:
-  db:
+  db-container:
     image: mysql:latest
     ports:
       - '3306:3306'
@@ -9,8 +9,8 @@ services:
     environment:
       MYSQL_DATABASE: 'formula_one_database'
       MYSQL_USER: 'userFormulaOne'
-      MYSQL_PASSWORD: 'passwordUserFormulaOne'
-      MYSQL_ROOT_PASSWORD: 'passwordRootFormulaOne'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'passwordRoot'
     restart: always
     expose:
       - '3306'
